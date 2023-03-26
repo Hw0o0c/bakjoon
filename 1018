@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, m, min = 2500;
+    cin >> n >> m;
+    char arr[51][51];
+    char c;
+    for (int i = 0;i < n;i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    for (int i = 8;i <= n;i++) {
+        for (int j = 8;j <= m;j++) {
+            int ans = 0;
+            c = arr[i - 8][j - 8];
+
+            for (int k = i - 8;k < i;k++) {
+                if (k % 2 == 0) {
+                    for (int l = j - 8;l < j;l++) {
+                        if (l % 2 == 0) {
+                            if (c != arr[k][l]) { ans++; }
+                        }
+                        else {
+                            if (c == arr[k][l]) { ans++; }
+                        }
+                    }
+                }
+                else {
+                    for (int l = j - 8;l < j;l++) {
+                        if (l % 2 == 0) {
+                            if (c == arr[k][l]) { ans++; }
+                        }
+                        else {
+                            if (c != arr[k][l]) { ans++; }
+                        }
+                    }
+                }
+            }
+            if (ans >= 32) { ans = 64 - ans; }
+            if (min > ans) { min = ans; }
+
+        }
+    }
+    cout << min;
+}
