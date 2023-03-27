@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int n, k, t=1, a=0, c=0;
+	int arr[1001] = { 0, };
+	
+	cin >> n >> k;
+	cout << "<";
+
+	for (int i = 0;i < n;i++) {
+		arr[i] = i+1;
+	}
+
+	while (c < n) {
+		if (arr[a]) {
+			if (t == k) {
+				if (c != 0) { cout << ", "; }
+				cout << arr[a];
+				arr[a] = 0;
+				c++;
+				a++;
+				t = 1;
+			}
+			else {
+				t++;
+				a++;
+			}
+		}
+		else { a++; }
+		if (a > n - 1) { a = 0; }
+	}
+
+	cout << ">";
