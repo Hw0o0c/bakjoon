@@ -1,0 +1,15 @@
+arr=[]
+oup=0
+n, k=map(int,input().split())
+
+for i in range(n):
+    inp=int(input())
+    arr.append(inp)
+
+for i in range(n-1,-1,-1):
+    if(k==0):break
+    if(arr[i] > k):continue
+    else:
+        oup += k // arr[i]
+        k = k % arr[i]
+print(oup)
