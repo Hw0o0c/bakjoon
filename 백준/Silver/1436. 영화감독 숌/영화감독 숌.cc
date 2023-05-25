@@ -1,0 +1,25 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+int main(void) {
+	int n,t=0;
+	cin >> n;
+	
+	for (int i = 666;t<n;i++) {
+		string c = to_string(i);
+		if (count(c.begin(), c.end(), '6') < 3) {
+			continue;
+		}
+		else {
+			for (int j = 0;j < c.length() - 2;j++) {
+				if (c[j] == c[j+1] && c[j] == c[j+2] && c[j] == '6') {
+					t++;
+					break;
+				}
+			}
+			if (t == n) { cout << i << "\n"; break; }
+		}
+	}
+}
